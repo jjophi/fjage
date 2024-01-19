@@ -9,7 +9,10 @@ plugins {
 
 defaultTasks 'jars'
 
-archivesBaseName = 'fjage'
+base {
+  archivesName = "fjage"
+}
+
 group = 'com.github.org-arl'
 version = new File(projectDir, 'VERSION').text.trim()
 
@@ -30,25 +33,27 @@ try {
   npmExists = npmproc.exitValue() == 0
 } catch (IOException ex){}
 
-targetCompatibility = 1.8
-sourceCompatibility = 1.8
+java {
+  targetCompatibility = 1.8
+  sourceCompatibility = 1.8
+}
 
 repositories {
   mavenCentral()
 }
 
 dependencies {
-  api 'org.codehaus.groovy:groovy:2.5.20'
-  api 'org.jline:jline:3.21.0'
-  api 'org.apache.commons:commons-lang3:3.12.0'
-  api 'commons-io:commons-io:2.11.0'
+  api 'org.codehaus.groovy:groovy:2.5.23'
+  api 'org.jline:jline:3.25.0'
+  api 'org.apache.commons:commons-lang3:3.14.0'
+  api 'commons-io:commons-io:2.15.1'
   api 'uk.com.robust-it:cloning:1.9.12'
-  api 'org.eclipse.jetty:jetty-server:9.4.50.v20221201'
-  api 'org.eclipse.jetty:jetty-servlet:9.4.50.v20221201'
-  api 'org.eclipse.jetty:jetty-rewrite:9.4.50.v20221201'
-  api 'org.eclipse.jetty.websocket:websocket-server:9.4.50.v20221201'
-  api 'com.google.code.gson:gson:2.10'
-  api 'com.fazecast:jSerialComm:2.9.3'
+  api 'org.eclipse.jetty:jetty-server:9.4.53.v20231009'
+  api 'org.eclipse.jetty:jetty-servlet:9.4.53.v20231009'
+  api 'org.eclipse.jetty:jetty-rewrite:9.4.53.v20231009'
+  api 'org.eclipse.jetty.websocket:websocket-server:9.4.53.v20231009'
+  api 'com.google.code.gson:gson:2.10.1'
+  api 'com.fazecast:jSerialComm:2.10.4'
   testImplementation 'junit:junit:4.13.2'
   testImplementation 'net.jodah:concurrentunit:0.4.6'
 }
